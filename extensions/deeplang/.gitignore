@@ -1,1 +1,7 @@
 node_modules
+dist
+*.tsbuildinfo
+raycast-env.d.ts
+swift/.build/
+swift/.raycast-swift-build/
+assets/compiled_raycast_swift/

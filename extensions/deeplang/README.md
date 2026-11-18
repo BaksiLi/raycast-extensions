@@ -1,38 +1,26 @@
-# Shenyandayi for Raycast
+# Shenyandayi
 
-A Raycast extension for accessing 深言达意 (WantWords & WantQuotes) - an AI-powered Chinese writing assistant developed by DeepLang AI (Tsinghua Univ.).
+An unofficial client for [Shenyandayi](https://www.shenyandayi.com/), a Chinese reverse dictionary and quotation search service. Describe a meaning to find words, or a theme to find poetry and quotations.
 
-## 緣起 (About)
+## Commands
 
-This extension provides quick access to DeepLang's intelligent word and quote discovery tools, helping you find the perfect expression in Chinese.
+- **Search Words** displays Chinese words that match a meaning or situation.
+- **Search Quotes** displays quotations that match a theme, with full text, author, and work when available.
 
-## 功能 (Features)
+Preview the converted query before pressing Return to search. Result actions copy the original text or a quotation with its source. Press `⌘O` to open the same query on the website.
 
-- 寻詞 (WantWords): Find precise Chinese words based on descriptions
-  - Support for words, idioms, common phrases, and classical Chinese
-  - Intelligent semantic matching
-  - Bilingual input support (Chinese/English)
+## Setup and Privacy
 
-- 觅句 (WantQuotes): Discover relevant Chinese expressions
-  - Famous quotes, classical poetry, prose selections
-  - Context-aware suggestions
-  - Multi-genre coverage
+The bundled Swift helper uses macOS WebKit to load the public result page when you press Return. It reads the first page of visible results in an ephemeral guest session. The extension keeps no search history or result cache. Using the browser action opens the search URL in your default browser.
 
-## 說明 (Requirements)
+The single **Convert search queries to Simplified Chinese** preference is enabled by default and applies to both search commands. Disable it to send the original query. Results are not converted.
 
-- For traditional Chinese support: `brew install opencc`
-  - N.B. If OpenCC installation fails, the extension will still work but will not convert traditional to simplified Chinese.
-- Raycast v1.0.0 or higher
+## Availability
 
-## 使用 (Usage)
+This extension requires macOS. Building from source requires Xcode and a Node.js toolchain. The prebuilt extension uses macOS WebKit.
 
-1. Open Raycast
-2. Choose either:
-   - `Words 寻詞` for word search (`WantWords`)
-   - `Quotes 觅句` for expression search (`WantQuotes`)
-3. Enter your query in Chinese or English
-4. Press Enter to search
+The [standalone repository](https://github.com/BaksiLi/shenyandayi-launcher) also maintains a multilingual Tinycast version.
 
-## Disclaimer
+## Attribution
 
-This is an unofficial extension and is not affiliated with DeepLang AI or 深言达意. For the official service, please visit [深言达意's website](https://www.shenyandayi.com).
+OpenCC JavaScript and dictionary licenses are included in `assets/licenses/` and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This extension is not affiliated with Shenyandayi, DeepLang AI, Raycast, or Tinycast.

@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "deeplang",
-  "title": "Shenyan Dayi",
-  "description": "Find the perfect Chinese words and expressions using DeepLang AI's writing assistant (unofficial client)",
+  "title": "Shenyandayi",
+  "description": "Find Chinese words and quotations from descriptions, with automatic Traditional to Simplified query conversion. Unofficial client.",
   "icon": "extension-icon.png",
   "author": "baksili",
   "categories": [
@@ -10,22 +10,31 @@
     "Developer Tools"
   ],
   "license": "MIT",
+  "platforms": [
+    "macOS"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaksiLi/shenyandayi-launcher.git"
+  },
+  "homepage": "https://github.com/BaksiLi/shenyandayi-launcher#readme",
+  "bugs": {
+    "url": "https://github.com/BaksiLi/shenyandayi-launcher/issues"
+  },
   "commands": [
     {
       "name": "wantwords",
       "title": "Search Words",
-      "subtitle": "尋詞 WantWords",
-      "description": "Find Chinese words and phrases based on descriptions",
-      "mode": "view",
-      "label": "Search Words"
+      "subtitle": "Shenyandayi · WantWords",
+      "description": "Describe a meaning or situation to find Chinese words on Shenyandayi.",
+      "mode": "view"
     },
     {
       "name": "wantquotes",
       "title": "Search Quotes",
-      "subtitle": "覓句 WantQuotes",
-      "description": "Find matching Chinese quotes and expressions",
-      "mode": "view",
-      "label": "Search Quotes"
+      "subtitle": "Shenyandayi · WantQuotes",
+      "description": "Find Chinese poetry, quotations, and expressions from a theme or description.",
+      "mode": "view"
     }
   ],
   "preferences": [
@@ -34,21 +43,17 @@
       "type": "checkbox",
       "required": false,
       "default": true,
-      "title": "Use System OpenCC",
-      "description": "Use brew-installed OpenCC for traditional to simplified conversion",
-      "label": "Use System OpenCC"
+      "title": "OpenCC",
+      "description": "Convert Traditional Chinese search queries to Simplified Chinese using bundled OpenCC. No separate installation required.",
+      "label": "Convert search queries to Simplified Chinese"
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.88.4",
-    "@raycast/utils": "^1.17.0",
-    "react": "^18.2.0"
+    "@raycast/api": "2.12.1",
+    "opencc-js": "1.4.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
-    "@raycast/eslint-config": "^1.0.11",
-    "@types/node": "20.8.10",
-    "@types/react": "^18.2.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
@@ -57,11 +62,10 @@
     "typescript-eslint": "^8.20.0"
   },
   "scripts": {
-    "build": "ray build",
+    "build": "ray build --environment dist --output dist --exit-on-error",
     "dev": "ray develop",
-    "fix-lint": "ray lint --fix",
-    "lint": "ray lint",
-    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
-    "publish": "npx @raycast/api@latest publish"
+    "lint": "eslint src eslint.config.mjs --max-warnings 0",
+    "check": "tsc --noEmit && npm run lint",
+    "format:check": "prettier --check src package.json tsconfig.json eslint.config.mjs"
   }
 }
